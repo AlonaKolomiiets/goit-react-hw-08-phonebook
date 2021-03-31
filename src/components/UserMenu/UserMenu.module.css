@@ -1,0 +1,19 @@
+.menu {
+  height: 60px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.link {
+  text-transform: uppercase;
+  width: 100%;
+  font-weight: 700;
+  margin: 10px;
+  padding: 6px;
+}
+
+.AuthNav {
+  display: flex;
+  justify-content: space-evenly;
+}
