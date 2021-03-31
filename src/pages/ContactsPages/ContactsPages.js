@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { initialContacts } from "../../redux/toolkit/operations/contactsOperations";
+import { initialContacts } from "../../redux/contacts/operations/contactsOperations";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList";
 import Filter from "../../components/Filter/Filter";
-import { getLoadingSelector } from "../../redux/toolkit/ selectors/contactsSelectors";
+import { getLoadingSelector } from "../../redux/contacts/ selectors/contactsSelectors";
 import styles from "./ContactsPages.module.css";
 
 const ContactsPages = () => {
