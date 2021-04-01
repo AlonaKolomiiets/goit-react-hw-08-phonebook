@@ -45,11 +45,7 @@ const contactsReducers = combineReducers({
 });
 
 
-const rootReducerContacts = combineReducers({
-  contacts: contactsReducers,
-});
-
-export default rootReducerContacts;
+export default contactsReducers;
 
 
 // import { persistReducer } from "redux-persist";

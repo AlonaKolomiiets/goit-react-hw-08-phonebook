@@ -25,10 +25,6 @@ const token = {
   },
 };
 
-//POST /users​/signup Создать нового пользователя
-//body {"name","email", "password"}
-//После успешной регистрации добавляем токен в HTTP-заголовок
-
 export const register = (credentials) => async (dispatch) => {
   dispatch(registerRequest());
 
@@ -69,4 +65,23 @@ export const logOut = () => async (dispatch) => {
   }
 };
 
-export const getCurrentUser = () => (dispatch, getState) => {};
+export const getCurrentUser = () => async (dispatch, getState) => {
+  const {
+    auth: { token: persistedToken },
+  } = getState();
+
+  if (!persistedToken) {
+    return;
+  }
+  token.set(persistedToken);
+
+  dispatch(getCurrentUserRequest());
+
+  try {
+    const response = await axios.get("/users/current");
+
+    dispatch(getCurrentUserSuccess(response.data));
+  } catch (error) {
+    dispatch(getCurrentUserError(error.message));
+  }
+};

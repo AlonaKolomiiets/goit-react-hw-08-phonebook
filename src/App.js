@@ -1,7 +1,9 @@
-import React, { Suspense, lazy } from "react";
-import { Route, Switch, Redirect } from "react-router-dom";
+import React, { Suspense, lazy, useEffect } from "react";
+import { Route, Switch, Redirect, useHistory } from "react-router-dom";
 import AppBarHeader from "./components/UserMenu/AppBarHeader";
 import Loader from "./components/Loader/Loader";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUser } from "./redux/auth/authOperations";
 
 const HomePage = lazy(() =>
   import("./pages/HomePage/HomePage" /* webpackChunkName: "home-page" */)
@@ -22,6 +24,11 @@ const RegisterPages = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
   // const token = useSelector((state) => state.token);
   // const history = useHistory();

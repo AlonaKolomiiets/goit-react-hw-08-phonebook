@@ -24,7 +24,7 @@ const LoginPages = () => {
   };
   return (
     <div className={styles.wrap}>
-      <h1>Login</h1>
+      <h1 className={styles.title}>Login</h1>
       <form onSubmit={onSubmit} className={styles.loginForm}>
         <input
           onChange={inputHeadler}
@@ -42,7 +42,7 @@ const LoginPages = () => {
         ></input>
         <button>Sign up</button>
       </form>
-      <p>
+      <p className={styles.title}>
         If you dont have an account please
         <NavLink to="/register"> Register </NavLink>
       </p>

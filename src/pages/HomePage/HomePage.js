@@ -1,8 +1,15 @@
 import React from "react";
-import "./HomePage.module.css";
+import styles from "./HomePage.module.css";
 
 const HomePage = () => {
-  return <div>Home</div>;
+  return (
+    <h1 className={styles.welcomeTitle}>
+      Приветственная страница телефонного справочника
+      <span role="img" aria-label="book">
+        📖
+      </span>
+    </h1>
+  );
 };
 
 export default HomePage;

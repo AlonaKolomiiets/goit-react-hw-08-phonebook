@@ -1,5 +1,5 @@
 //import { createSelector } from "reselect";
 
-export const getIsAuthSelector = (state) => !!state.auth.auth.token;
+export const getIsAuthSelector = (state) => !!state.auth.token;
 
-export const getUserName = state=>state.auth.auth.user.name;
+export const getUserEmail = state=>state.auth.user.email;

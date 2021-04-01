@@ -24,7 +24,7 @@ const RegisterPages = () => {
   };
   return (
     <div className={styles.wrap}>
-      <h1>Registration</h1>
+      <h1 className={styles.title}>Registration</h1>
       <form onSubmit={OnSubmit} className={styles.registrationForm}>
         <input
           onChange={inputHeadler}
@@ -49,7 +49,7 @@ const RegisterPages = () => {
         ></input>
         <button>Sign up</button>
       </form>
-      <p>
+      <p className={styles.title}>
         If you have already had an account please
         <NavLink to="/login"> Sign in </NavLink>
       </p>

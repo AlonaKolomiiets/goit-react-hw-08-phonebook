@@ -52,7 +52,7 @@ const ContactForm = () => {
   };
 
   return (
-    <div>
+    <div >
       <form onSubmit={submitHandler}>
         <label className={styles.contactFormLable}>
           <input
