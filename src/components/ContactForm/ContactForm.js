@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../../redux/contacts/operations/contactsOperations";
+import { makeStyles } from "@material-ui/core/styles";
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
+import SaveIcon from "@material-ui/icons/Save";
 import { v4 as uuidv4 } from "uuid";
 import { getContactsSelector } from "../../redux/contacts/ selectors/contactsSelectors";
+import { addContact } from "../../redux/contacts/operations/contactsOperations";
+
 import styles from "./ContactForm.module.css";
 
 const initialState = {
@@ -50,30 +55,57 @@ const ContactForm = () => {
 
     setForm(initialState);
   };
+  const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+    root: {
+      "& .MuiTextField-root": {
+        margin: theme.spacing(1),
+        width: 200,
+      },
+    },
+  }));
+
+  const classes = useStyles();
 
   return (
-    <div >
-      <form onSubmit={submitHandler}>
+    <div>
+      <form className={styles.form} onSubmit={submitHandler}>
         <label className={styles.contactFormLable}>
-          <input
+          <TextField
+            id="user-name"
+            variant="filled"
             onChange={inputHandler}
             type="text"
             name="name"
             placeholder="Enter name..."
             value={name}
-          ></input>
+          />
         </label>
         <label className={styles.contactFormLable}>
-          <input
+          <TextField
+            id="user-tel"
+            variant="filled"
             onChange={inputHandler}
             type="tel"
             name="number"
             placeholder="Enter number..."
             value={number}
-          ></input>
+          />
         </label>
 
-        <button type="submit">Add contact</button>
+        {/* <button type="submit">Add contact</button> */}
+        <Button
+          type="submit"
+          variant="contained"
+          color="primary"
+          size="large"
+          className={classes.button}
+          startIcon={<SaveIcon />}
+        >
+          Add contact
+        </Button>
       </form>
     </div>
   );

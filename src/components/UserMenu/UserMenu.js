@@ -15,7 +15,7 @@ const UserMenu = () => {
     <div className={styles.AuthNav}>
       <span className={styles.link}>Welcome, {email} </span>
       <button onClick={onLogout} className={styles.link} type="button">
-        Выйти
+        Log Out
       </button>
     </div>
   );

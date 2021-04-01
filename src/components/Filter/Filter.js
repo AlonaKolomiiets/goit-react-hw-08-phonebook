@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { changeFilter } from "../../redux/contacts/actions/contactsActions";
 import { getFilterSelector } from "../../redux/contacts/ selectors/contactsSelectors";
+import TextField from "@material-ui/core/TextField";
 import styles from "./Filter.module.css";
 
 const Filter = () => {
@@ -12,11 +13,14 @@ const Filter = () => {
     const { value } = target;
     dispatch(changeFilter(value));
   };
+
   return (
     <>
-      <p>Find contacts by name</p>
+      <p className={styles.title}>Find contacts by name</p>
       <label className={styles.FilterLable}>
-        <input
+        <TextField
+          id="filter"
+          variant="filled"
           onChange={inputHandler}
           type="text"
           name="filter"

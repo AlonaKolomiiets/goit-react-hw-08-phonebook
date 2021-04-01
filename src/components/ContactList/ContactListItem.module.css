@@ -1,3 +1,13 @@
 .contactListItemBtn {
   margin: 10px;
 }
+
+.list {
+  text-align: center;
+}
+
+.listItem {
+  font-size: 20px;
+  font-weight: 500;
+  color: royalblue;
+}

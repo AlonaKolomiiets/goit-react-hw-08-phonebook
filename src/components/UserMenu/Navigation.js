@@ -24,7 +24,7 @@ const Navigation = () => {
         style={linkStyles.base}
         activeStyle={linkStyles.active}
       >
-        Главная
+       Home
       </NavLink>
       {isAuthenticated && (
         <NavLink
@@ -33,7 +33,7 @@ const Navigation = () => {
           style={linkStyles.base}
           activeStyle={linkStyles.active}
         >
-          Справочник
+          Phonebook
         </NavLink>
       )}
     </div>

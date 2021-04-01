@@ -1,10 +1,12 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { initialContacts } from "../../redux/contacts/operations/contactsOperations";
+import { getLoadingSelector } from "../../redux/contacts/ selectors/contactsSelectors";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList";
 import Filter from "../../components/Filter/Filter";
-import { getLoadingSelector } from "../../redux/contacts/ selectors/contactsSelectors";
+import Loader from "../../components/Loader/Loader";
+
 import styles from "./ContactsPages.module.css";
 
 const ContactsPages = () => {
@@ -18,10 +20,10 @@ const ContactsPages = () => {
 
   return (
     <div>
-      {loading && <h2>Loading...</h2>}
-      <h1>Phonebook</h1>
+      {loading && <Loader />}
+      <h1 className={styles.title}>Phonebook</h1>
       <ContactForm />
-      <h2>Contacts</h2>
+      <h2 className={styles.title}>Contacts</h2>
       <Filter />
       <ContactList />
     </div>

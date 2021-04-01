@@ -1,5 +1,5 @@
 import React, { Suspense, lazy, useEffect } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Switch } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getCurrentUser } from "./redux/auth/authOperations";
 import AppBarHeader from "./components/UserMenu/AppBarHeader";
@@ -37,9 +37,19 @@ function App() {
       <AppBarHeader />
       <Suspense fallback={<Loader />}>
         <Switch>
-          <Route exact path="/" component={HomePage}></Route>
-          <Route path="/register" component={RegisterPages} />
-          <PublicRoute path="/login" restricted component={LoginPages} />
+          <PublicRoute exact path="/" component={HomePage} />
+          <PublicRoute
+            path="/register"
+            restricted
+            redirectTo="/contacts"
+            component={RegisterPages}
+          />
+          <PublicRoute
+            path="/login"
+            restricted
+            redirectTo="/contacts"
+            component={LoginPages}
+          />
           <PrivateRoute
             path="/contacts"
             component={ContactsPages}

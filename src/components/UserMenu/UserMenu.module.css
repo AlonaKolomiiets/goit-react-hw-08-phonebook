@@ -16,4 +16,5 @@
 .AuthNav {
   display: flex;
   justify-content: space-evenly;
+  white-space: nowrap;
 }
