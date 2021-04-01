@@ -1,16 +1,20 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { AppBar, Toolbar } from "@material-ui/core";
 import AuthNav from "./AuthNav";
 import UserMenu from "./UserMenu";
 import Navigation from "./Navigation";
 import styles from "./UserMenu.module.css";
+import { getIsAuthSelector } from "../../redux/auth/authSelectors";
 
 const AppBarHeader = () => {
+  const isAuthenticated = useSelector(getIsAuthSelector);
+  // console.log(isAuthenticated)
   return (
     <AppBar position="static">
       <Toolbar variant="dense" className={styles.menu}>
         <Navigation />
-        {false ? <UserMenu /> : <AuthNav />}
+        {isAuthenticated ? <UserMenu /> : <AuthNav />}
       </Toolbar>
     </AppBar>
   );

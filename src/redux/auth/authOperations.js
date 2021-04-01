@@ -16,7 +16,14 @@ import {
 
 axios.defaults.baseURL = "https://goit-phonebook-api.herokuapp.com";
 
-const token = {};
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unSet() {
+    axios.defaults.headers.common.Authorization = "";
+  },
+};
 
 //POST /users​/signup Создать нового пользователя
 //body {"name","email", "password"}
@@ -27,15 +34,39 @@ export const register = (credentials) => async (dispatch) => {
 
   try {
     const response = await axios.post("/users/signup", credentials);
-    console.log(response.data);
+
+    token.set(response.data.token);
+
     dispatch(registerSuccess(response.data));
   } catch (error) {
     dispatch(registerError(error.message));
   }
 };
 
-export const logIn = (credentials) => (dispatch) => {};
+export const logIn = (credentials) => async (dispatch) => {
+  dispatch(loginRequest());
+  try {
+    const response = await axios.post("/users/login", credentials);
 
-export const logOut = () => (dispatch) => {};
+    token.set(response.data.token);
+
+    dispatch(loginSuccess(response.data));
+  } catch (error) {
+    dispatch(loginError(error.message));
+  }
+};
+
+export const logOut = () => async (dispatch) => {
+  dispatch(logoutRequest());
+  try {
+    await axios.post("/users/logout");
+
+    token.unSet();
+
+    dispatch(logoutSuccess());
+  } catch (error) {
+    dispatch(logoutError(error.message));
+  }
+};
 
 export const getCurrentUser = () => (dispatch, getState) => {};
