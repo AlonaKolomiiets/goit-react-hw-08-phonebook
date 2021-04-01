@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logIn } from "../../redux/auth/authOperations";
 import styles from "./LoginPages.module.css";
 
 const initialState = {
@@ -10,21 +11,21 @@ const initialState = {
 
 const LoginPages = () => {
   const [form, setForm] = useState({ ...initialState });
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const inputHeadler = ({ target }) => {
     const { name, value } = target;
     setForm((state) => ({ ...state, [name]: value }));
   };
 
-  //   const submit = (e) => {
-  //     e.preventDefault();
-  //     dispatch(loginOperation(form));
-  //     // console.log(form);
-  //   };
+  const onSubmit = (e) => {
+    e.preventDefault();
+    dispatch(logIn(form));
+    // console.log(form);
+  };
   return (
     <div className={styles.wrap}>
       <h1>Login</h1>
-      <form className={styles.loginForm}>
+      <form onSubmit={onSubmit} className={styles.loginForm}>
         <input
           onChange={inputHeadler}
           type="email"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { register } from "../../redux/auth/authOperations";
 import styles from "./RegisterPages.module.css";
 
 const initialState = {
@@ -10,21 +11,21 @@ const initialState = {
 };
 const RegisterPages = () => {
   const [form, setForm] = useState({ ...initialState });
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const inputHeadler = ({ target }) => {
     const { name, value } = target;
     setForm((state) => ({ ...state, [name]: value }));
   };
 
-  // const submit = (e) => {
-  //   e.preventDefault();
-  //   dispatch(registerOperation(form));
-  //   console.log(form);
-  // };
+  const OnSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register(form));
+    console.log(form);
+  };
   return (
     <div className={styles.wrap}>
       <h1>Registration</h1>
-      <form className={styles.registrationForm}>
+      <form onSubmit={OnSubmit} className={styles.registrationForm}>
         <input
           onChange={inputHeadler}
           type="text"

@@ -43,4 +43,23 @@ const contactsReducers = combineReducers({
   filter,
   loading,
 });
-export default contactsReducers;
+
+
+const rootReducerContacts = combineReducers({
+  contacts: contactsReducers,
+});
+
+export default rootReducerContacts;
+
+
+// import { persistReducer } from "redux-persist";
+// import storage from "redux-persist/lib/storage";
+
+// const persistConfig = {
+//   key: "contacts",
+//   storage,
+//   blacklist: ["filter"],
+// };
+
+// const persistedReducer = persistReducer(persistConfig, contactsReducer);
+

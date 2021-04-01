@@ -9,7 +9,9 @@ import {
   REGISTER,
 } from "redux-persist";
 import logger from "redux-logger";
-import rootReducer from "./contacts/reducers/index";
+import rootReducerContacts from "./contacts/reducers/contactsReducer";
+import rootReducerAuth from "./auth/authReducers"
+
 
 const middleware = [
   ...getDefaultMiddleware({
@@ -20,7 +22,10 @@ const middleware = [
   // logger,
 ];
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    auth:rootReducerAuth,
+    contacts: rootReducerContacts,
+  },
   middleware,
   devTools: process.env.NODE_ENV === "development",
 });
