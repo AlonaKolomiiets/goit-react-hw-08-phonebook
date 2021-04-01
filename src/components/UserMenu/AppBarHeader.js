@@ -7,6 +7,7 @@ import Navigation from "./Navigation";
 import styles from "./UserMenu.module.css";
 import { getIsAuthSelector } from "../../redux/auth/authSelectors";
 
+
 const AppBarHeader = () => {
   const isAuthenticated = useSelector(getIsAuthSelector);
   // console.log(isAuthenticated)
