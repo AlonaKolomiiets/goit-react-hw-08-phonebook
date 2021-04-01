@@ -10,7 +10,6 @@ import { getIsAuthSelector } from "../../redux/auth/authSelectors";
 
 const AppBarHeader = () => {
   const isAuthenticated = useSelector(getIsAuthSelector);
-  // console.log(isAuthenticated)
   return (
     <AppBar position="static">
       <Toolbar variant="dense" className={styles.menu}>
