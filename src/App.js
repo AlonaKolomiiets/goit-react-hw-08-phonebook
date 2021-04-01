@@ -1,10 +1,11 @@
 import React, { Suspense, lazy, useEffect } from "react";
-import { Route, Switch, Redirect, useHistory } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getCurrentUser } from "./redux/auth/authOperations";
 import AppBarHeader from "./components/UserMenu/AppBarHeader";
 import Loader from "./components/Loader/Loader";
-import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser } from "./redux/auth/authOperations";
-import  PrivateRoute  from "./components/UserMenu/PrivateRoute";
+import PrivateRoute from "./components/UserMenu/PrivateRoute";
+import PublicRoute from "./components/UserMenu/PublicRoute";
 
 const HomePage = lazy(() =>
   import("./pages/HomePage/HomePage" /* webpackChunkName: "home-page" */)
@@ -38,9 +39,12 @@ function App() {
         <Switch>
           <Route exact path="/" component={HomePage}></Route>
           <Route path="/register" component={RegisterPages} />
-          <Route path="/login" component={LoginPages} />
-          <PrivateRoute path="/contacts" component={ContactsPages} redirectTo="/login"/>
-  
+          <PublicRoute path="/login" restricted component={LoginPages} />
+          <PrivateRoute
+            path="/contacts"
+            component={ContactsPages}
+            redirectTo="/login"
+          />
         </Switch>
       </Suspense>
     </>
