@@ -6,7 +6,6 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList";
 import Filter from "../../components/Filter/Filter";
 import Loader from "../../components/Loader/Loader";
-
 import styles from "./ContactsPages.module.css";
 
 const ContactsPages = () => {

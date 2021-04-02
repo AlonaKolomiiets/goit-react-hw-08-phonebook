@@ -6,6 +6,7 @@ import AppBarHeader from "./components/UserMenu/AppBarHeader";
 import Loader from "./components/Loader/Loader";
 import PrivateRoute from "./components/UserMenu/PrivateRoute";
 import PublicRoute from "./components/UserMenu/PublicRoute";
+import routes from "./routes";
 
 const HomePage = lazy(() =>
   import("./pages/HomePage/HomePage" /* webpackChunkName: "home-page" */)
@@ -37,23 +38,23 @@ function App() {
       <AppBarHeader />
       <Suspense fallback={<Loader />}>
         <Switch>
-          <PublicRoute exact path="/" component={HomePage} />
+          <PublicRoute exact path={routes.home} component={HomePage} />
           <PublicRoute
-            path="/register"
+            path={routes.register}
             restricted
-            redirectTo="/contacts"
+            redirectTo={routes.contacts}
             component={RegisterPages}
           />
           <PublicRoute
-            path="/login"
+            path={routes.login}
             restricted
-            redirectTo="/contacts"
+            redirectTo={routes.contacts}
             component={LoginPages}
           />
           <PrivateRoute
-            path="/contacts"
+            path={routes.contacts}
             component={ContactsPages}
-            redirectTo="/login"
+            redirectTo={routes.login}
           />
         </Switch>
       </Suspense>

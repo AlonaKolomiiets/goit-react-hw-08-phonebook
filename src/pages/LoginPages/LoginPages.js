@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logIn } from "../../redux/auth/authOperations";
+import routes from "../../routes";
 import styles from "./LoginPages.module.css";
 
 const initialState = {
@@ -20,7 +21,6 @@ const LoginPages = () => {
   const onSubmit = (e) => {
     e.preventDefault();
     dispatch(logIn(form));
-    // console.log(form);
   };
   return (
     <div className={styles.wrap}>
@@ -44,7 +44,7 @@ const LoginPages = () => {
       </form>
       <p className={styles.title}>
         If you dont have an account please
-        <NavLink to="/register"> Register </NavLink>
+        <NavLink to={routes.register}> Register </NavLink>
       </p>
     </div>
   );
