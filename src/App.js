@@ -1,7 +1,9 @@
 import React, { Suspense, lazy, useEffect } from "react";
 import { Switch } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "./redux/auth/authOperations";
+import { getIsAuthSelector } from "./redux/auth/authSelectors";
+import { initialContacts } from "./redux/contacts/operations/contactsOperations";
 import AppBarHeader from "./components/UserMenu/AppBarHeader";
 import Loader from "./components/Loader/Loader";
 import PrivateRoute from "./components/UserMenu/PrivateRoute";
@@ -32,6 +34,12 @@ function App() {
   useEffect(() => {
     dispatch(getCurrentUser());
   }, []);
+
+  const isAuthenticated = useSelector(getIsAuthSelector);
+
+  useEffect(() => {
+    isAuthenticated && dispatch(initialContacts());
+  }, [isAuthenticated]);
 
   return (
     <>

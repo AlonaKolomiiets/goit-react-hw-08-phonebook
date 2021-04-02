@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { initialContacts } from "../../redux/contacts/operations/contactsOperations";
+import React from "react";
+import { useSelector } from "react-redux";
 import { getLoadingSelector } from "../../redux/contacts/ selectors/contactsSelectors";
 import ContactForm from "../../components/ContactForm/ContactForm";
 import ContactList from "../../components/ContactList";
@@ -11,11 +10,11 @@ import styles from "./ContactsPages.module.css";
 const ContactsPages = () => {
   const loading = useSelector(getLoadingSelector);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(initialContacts());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(initialContacts());
+  // }, []);
 
   return (
     <div>
